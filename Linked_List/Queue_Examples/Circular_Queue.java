@@ -3,66 +3,71 @@ package Queue_Examples;
 import java.util.Scanner;
 import javax.swing.plaf.synth.SynthOptionPaneUI;
 
-public class Queue_Class {
+public class Circular_Queue {
 
-	 private int front,rear,MaxSize,queue[];
-	   //create stack:Ask user for size and create a stack of that size.
-	    public void create_queue(int size)
+	 private int count,front,rear,MaxSize,cirqueue[];
+	    void create_cirqueue(int size)
 	    {
 	        rear=-1;
 	        front=0;
+	        count=0;
 	        MaxSize=size;
-	        queue=new int[MaxSize];
+	        cirqueue=new int[MaxSize];
 	    }
-	   //enqueue(e):
-	    //Inserts an element on top of the stack.
-	    //In every push, the tos increments by one and
-	    // then we insert the element.
+
 	    public void enqueue(int e)
 	    {
-	        queue[++rear]=e;
+	        rear = (rear+1)%MaxSize;
+	        cirqueue[rear]=e;
+	        count++;
 	    }
 	    //is_full()
-	    // which returns true if Queue is full and false if Queue is not full
 	    boolean is_full()
 	    {
-	        return (rear==MaxSize-1);
+	        return (count==MaxSize);
 	    }
 	    //dequeue():e Removes and returns the element at queue front element.
 	    //With every dequeue front++
-	    public int dequeue()
+	    int dequeue()
 	    {
-	        return (queue[front++]);
+	        int temp = (cirqueue[front]);
+	        front = (front+1)%MaxSize;
+	        count--;
+	        return temp;
 	    }
 	    //empty
 	    boolean is_empty()
 	    {
-	       return (front>rear);
+	       return (count==0);
 	    }
-	    public void print_queue()//Print Queue in FIFO manner.
+	    void print_queue()//Print Queue in FIFO manner.
 	    {
-	        for(int i=front;i<=rear;i++)
-	        {
-	            System.out.print(queue[i]+"-");
-	        }
+	       int c=0;
+	       int index=front;
+	       while(c<count) 
+	       {
+	    	   System.out.print(cirqueue[index]+"-");
+	    	   c++;
+	    	   index=(index+1)%MaxSize;
+	       }
 	    }
 
 	public static void main(String[] args) {
         int size,e,choice;
-        Queue_Class obj=new Queue_Class();
+        Circular_Queue obj=new Circular_Queue();
 
         Scanner sc=new Scanner(System.in);
         //only at start
-        System.out.println("Enter size of Queue:");
+        System.out.println("Enter size of Circula Queue:");
         size=sc.nextInt();
         //create Queue and init
-        obj.create_queue(size);
+        obj.create_cirqueue(size);
         do 
         {
             //Create menu:
-            System.out.println("Queue Menu ");
+            System.out.println("Circular Queue Menu ");
             System.out.println("==============");
-        	System.out.println("1.Push");//1. Push 
+        	System.out.println("1.Enqueue");//1. Push 
         	System.out.println("2.Dequeue"); //2. Pop
         	System.out.println("3.Print");//3. Print
         	System.out.println("4.Exit");// 4. Exit
@@ -78,7 +83,7 @@ public class Queue_Class {
             	        	obj.enqueue(e);
             	        	System.out.println("Element Pushed");
             	        } else {
-            	        	System.out.println("Queue is full");
+            	        	System.out.println("Circular Queue is full");
             	        }
             	        break;            	         
    
@@ -86,7 +91,7 @@ public class Queue_Class {
                 	if(!obj.is_empty()) {
                 		System.out.println("Element Pop " + obj.dequeue());
                 	} else {
-                		System.out.println("Queue is empty");
+                		System.out.println("Circular Queue is empty");
                 	}
                 	break;
                 	
@@ -94,10 +99,10 @@ public class Queue_Class {
                 	
                 case 3://Check if Queue is not empty; then only print; else show message.
                 	if(!obj.is_empty()) {
-                		System.out.println("Queue elements");
+                		System.out.println("Circular Queue elements");
                 		obj.print_queue();
                 	} else {
-                		System.out.println("Queue is empty");
+                		System.out.println("Circular Queue is empty");
                 	}
                 	break;
                 	
@@ -109,7 +114,7 @@ public class Queue_Class {
                 default://Invalid choice
                 	System.out.println("Invalid choice");
             }
-        }while(choice!=0);
+        }while(choice!=4);
     }
 
 }

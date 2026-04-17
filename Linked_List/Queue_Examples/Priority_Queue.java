@@ -3,11 +3,11 @@ package Queue_Examples;
 import java.util.Scanner;
 import javax.swing.plaf.synth.SynthOptionPaneUI;
 
-public class Queue_Class {
+public class Priority_Queue {
 
 	 private int front,rear,MaxSize,queue[];
 	   //create stack:Ask user for size and create a stack of that size.
-	    public void create_queue(int size)
+	    void create_queue(int size)
 	    {
 	        rear=-1;
 	        front=0;
@@ -21,6 +21,19 @@ public class Queue_Class {
 	    public void enqueue(int e)
 	    {
 	        queue[++rear]=e;
+	        //sort
+	        for(int i=front;front<rear;i++)
+	        {
+	        	for (int j=front;front<rear;i++)
+	        	{
+	        		if(queue[j]>queue[j+1])
+	        		{
+	        			int temp = queue[j];
+	        			queue[j] = queue[j+1];
+	        			queue[j+1]=temp;
+	        		}
+	        	}
+	        }
 	    }
 	    //is_full()
 	    // which returns true if Queue is full and false if Queue is not full
@@ -30,7 +43,7 @@ public class Queue_Class {
 	    }
 	    //dequeue():e Removes and returns the element at queue front element.
 	    //With every dequeue front++
-	    public int dequeue()
+	    int dequeue()
 	    {
 	        return (queue[front++]);
 	    }
@@ -39,7 +52,7 @@ public class Queue_Class {
 	    {
 	       return (front>rear);
 	    }
-	    public void print_queue()//Print Queue in FIFO manner.
+	    void print_queue()//Print Queue in FIFO manner.
 	    {
 	        for(int i=front;i<=rear;i++)
 	        {

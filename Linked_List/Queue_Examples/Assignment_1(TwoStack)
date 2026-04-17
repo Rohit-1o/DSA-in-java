@@ -1,0 +1,116 @@
+import java.util.Scanner;
+
+public class TwoStacks {
+    int[] arr;
+    int top1,top2;
+    int size;
+
+    public TwoStacks(int n) {
+        size =n;
+        arr = new int[n];
+        top1 = -1;
+        top2 = n;
+    }
+
+    void push1(int x) {
+        if (top1 + 1==top2) {
+            System.out.println("Stack Overflow");
+            return;
+        }
+        arr[++top1]=x;
+    }
+
+    void push2(int x) {
+        if (top1 + 1==top2) {
+            System.out.println("Stack Overflow");
+            return;
+        }
+        arr[--top2] = x;
+    }
+
+    int pop1() {
+        if (top1 == -1) {
+            System.out.println("Stack Underfow");
+            return -1;
+        }
+        return (arr[top1--]);
+    }
+
+    int pop2() {
+        if (top2 == size) {
+            System.out.println("Stack Underflow");
+            return -1;
+        }
+        return (arr[top2++]);
+    }
+
+    void print_stack() {
+        System.out.print("Stack1: ");
+        for (int i = 0; i <= top1; i++) {
+            System.out.print(arr[i] + " ");
+        }
+
+        System.out.print("\nStack2: ");
+        for (int i = size - 1; i >= top2; i--) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Stack Size");
+        int n=sc.nextInt();
+
+        TwoStacks ts = new TwoStacks(n);
+        int choice,e = 0;
+
+        do
+        {
+            System.out.println("Stack Menu");
+            System.out.println("1. Push1() Element");
+            System.out.println("2. Push2() Element");
+            System.out.println("3. Pop1() Element");
+            System.out.println("4. Pop2() Element");
+            System.out.println("5. Print Stack");
+            System.out.println("6. Exit");
+
+            System.out.println("Enter Choice :");
+            choice = sc.nextInt();
+
+            switch(choice) {
+                case 1 :
+                    System.out.println("Enter Value :");
+                    e = sc.nextInt();
+                    ts.push1(e);
+                    break;
+
+                case 2:
+                    System.out.println("Enter Value :");
+                    e = sc.nextInt();
+                    ts.push2(e);
+                    break;
+
+                case 3 :
+                    System.out.println("Poped " + ts.pop1());
+                    break;
+
+                case 4 :
+                    System.out.println("Poped "+ts.pop2());
+                    break;
+
+                case 5 :
+                    ts.print_stack();
+                    break;
+
+                case 6 :
+                    System.out.println("Exiting");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice");
+            }
+        }while (choice!=0);
+    }
+}

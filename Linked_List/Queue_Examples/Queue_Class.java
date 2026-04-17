@@ -7,7 +7,7 @@ public class Queue_Class {
 
 	 private int front,rear,MaxSize,queue[];
 	   //create stack:Ask user for size and create a stack of that size.
-	    public void create_queue(int size)
+	    void create_queue(int size)
 	    {
 	        rear=-1;
 	        front=0;
@@ -30,7 +30,7 @@ public class Queue_Class {
 	    }
 	    //dequeue():e Removes and returns the element at queue front element.
 	    //With every dequeue front++
-	    public int dequeue()
+	    int dequeue()
 	    {
 	        return (queue[front++]);
 	    }
@@ -39,7 +39,7 @@ public class Queue_Class {
 	    {
 	       return (front>rear);
 	    }
-	    public void print_queue()//Print Queue in FIFO manner.
+	    void print_queue()//Print Queue in FIFO manner.
 	    {
 	        for(int i=front;i<=rear;i++)
 	        {
