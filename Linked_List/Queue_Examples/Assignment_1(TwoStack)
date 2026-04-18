@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class TwoStacks {
     int[] arr;
     int top1,top2;
