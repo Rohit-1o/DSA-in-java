@@ -3,7 +3,6 @@ package Algorithms;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
-
 public class Sorting_Algorithms {
 
 	    static void bubble_sort(int a[])
@@ -110,7 +109,6 @@ public class Sorting_Algorithms {
 	    if(i<end)
 	        quick_sort(a,start+1,end);
 	}
-
 
 	    public static void main(String[] args) {
 	        int a[]={55,11,99,22,33,77,88,44,66};
