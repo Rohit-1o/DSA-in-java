@@ -1,7 +1,6 @@
 package Linked_List;
 
 import java.util.Scanner;
-
 public class LinkedList {
 
     // Node class
