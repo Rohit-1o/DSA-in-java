@@ -74,8 +74,7 @@ public class Dynamic_Stack {
         	System.out.println("3.peek");  //3. Peek
         	System.out.println("4.print");//4. Print
         	System.out.println("0. Exit");
-        	
-        	
+        	 	
             //read choice
             choice=sc.nextInt();
         	switch(choice)
