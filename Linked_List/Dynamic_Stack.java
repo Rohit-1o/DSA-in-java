@@ -1,5 +1,4 @@
 package Linked_List;
-
 import java.util.Scanner;
 import Stack_Example.Stack_Class;
 
