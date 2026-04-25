@@ -85,7 +85,6 @@ public class Dynamic_Stack {
                     obj.push(e);
                     break;
             	         
-   
                 case 2:
                 	obj.pop();
                 	break;
