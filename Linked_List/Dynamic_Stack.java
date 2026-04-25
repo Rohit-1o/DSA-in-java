@@ -90,7 +90,6 @@ public class Dynamic_Stack {
                 	obj.pop();
                 	break;
                 	
-                	
                 case 3:
                 	obj.peek();
                 	break;
@@ -98,7 +97,6 @@ public class Dynamic_Stack {
                 case 4:
                 	obj.print_list();
                 	break;
-                	
                 	
                 case 0://Exit message and stop. 
                 	System.out.println("Exit meassage..");
