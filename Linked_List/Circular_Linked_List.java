@@ -13,8 +13,6 @@ public class Circular_Linked_List {
 		}
 	}
 
-
-
     private Node root,last;
 
     void insert_left(int data) {
