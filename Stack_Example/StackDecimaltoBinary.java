@@ -1,5 +1,4 @@
 package Stack_Example;
-
 import java.util.Scanner;
 import java.util.Stack;
 
